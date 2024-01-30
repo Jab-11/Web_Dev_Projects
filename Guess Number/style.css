@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #bbffd0;
+}
+.game{
+    background-color: white;
+    width: 60vmax;
+    margin: 20px auto;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #474545a3;
+}
+.title{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    font-family:Poppins, sans-serif;
+    color: #e10a0a;
+    margin-bottom: 10px;
+}
+.inp, .guess{
+    text-align: center;
+    font-size: medium;
+    font-family:Poppins;
+    margin: 10px auto;
+}
+.inp input[type="number"], .guess input[type="number"]{
+    text-align: center;
+    width: 42px;
+    /* box-shadow: 0 0 3px #424242; */
+    border: 1px solid rgb(153, 153, 153);
+}
+
+#submit a{
+    text-decoration: none;
+    color: white;
+    background-color: #ff7272;
+    font-family:Poppins;
+    /* margin:  */
+    padding: 5px 6px;
+}
+button{
+    padding: 0px;
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    background-color: #ff7272;
+    font-family:Poppins;
+    /* margin:  */
+    padding: 5px 6px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #e10a0a;
+    color: beige;
+    
+}
+#result{
+    text-align: center;
+    font-family:Poppins;
+    margin: 15px auto;
+}
+#guess{
+    width: 35px;
+}

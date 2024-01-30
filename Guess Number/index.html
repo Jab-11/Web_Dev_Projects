@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GuessNum</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+      </style>
+</head>
+<body>
+    <div class="game">
+        <div class="title">
+            Guess The Number
+        </div>
+        <div class="inp">
+            <span>Range: </span>
+            <input type="number" id="min" placeholder="min" width="7px">
+            <span> - </span>
+            <input type="number" id="max" placeholder="max">
+        </div>
+        <button id="submit" onclick="mrandom()">
+            Submit
+        </button>
+        <div>
+            <p id="result"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
