@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %} 
+        <!-- <div class="mb-3"> -->
+          
+          <form action="/game" method="POST">
+            <div class="mb-5">
+            <span class="fs-5"> Select the range : </span>
+              <select name="range" id="range" style="background-color:#752333; color:#d8d583">
+                  <option value="10">1-10</option>
+                  <option value="100">1-100</option>
+                  <option value="1000">1-1000</option>
+              </select>
+            </div>
+              <button class="mb-5" style="background-color:#752333; color:#d8d583" type="submit">Go!!</button>
+          </form>
+
+{% endblock body %}

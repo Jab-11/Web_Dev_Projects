@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body %}
+      <div class="container mb-3 mt-3" style="width: 50%;">
+      
+        <h4>Add your TODO</h4>
+      
+        <form action="/" method="POST">
+          <div class="mt-2 mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Todo</label>
+            <input type="text" class="form-control" name="todo" id="exampleFormControlInput1" placeholder="what to do?">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Due Date</label>
+            <input type="date" class="form-control" name="date" id="exampleFormControlInput2" placeholder="date" style="display: flex; flex-flow: row-reverse; padding: 8px; height: auto; gap: 4px;">
+          </div>
+          <div class="add">
+            <input class="btn btn-primary" type="submit" value="Add">
+          </div>
+        </form>
+      </div>
+
+      <div class="container mt-5" style="width: 50%;">
+        <h4>TODO List</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Todo</th>
+              <th scope="col">Due Date</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for todo in all %}
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{todo.todo}}</td>
+              <td>{{todo.d_date}}</td>
+              <td>
+                <a href="/done/{{todo.sno}}" type="button" class="btn btn-outline-success"><i class="bi bi-check"></i></button>
+                
+              </td>
+              <td>
+                <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark">
+                <i class="bi bi-trash3"></i></button>
+              </td>
+
+            </tr>
+            {% endfor %}
+            
+          
+          </tbody>
+        </table>
+      </div>
+
+    
+    {% endblock body %}

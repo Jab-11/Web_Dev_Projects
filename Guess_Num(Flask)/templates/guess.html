@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %} 
+<form action="/gamestart" method='POST'>
+    <div class="mb-2 d-flex flex-column gap-4 align-items-center">
+                <div class="mb-2">
+                    <label for="guess"> Guess </label>
+                    <input type="number" name="guess" style="width:50px; background-color:#752333; color:#d8d583" class="ms-2">
+                    
+                </div>
+                <button class="mb-2" style="background-color:#752333; color:#d8d583" type="submit">Submit</button>
+                <!-- <label for="guess" > Guess </label>
+                <input type="number" name="guess" style="width:50px; background-color:#752333; color:#d8d583" class="ms-2" required min="1" max="{{ limit }}" autofocus {{ focus }}>
+                <button class="mb-5" style="background-color:#752333; color:#d8d583" type="submit" {{ focus }}>Check</button> -->
+                <div class="feedback"> {{feedback}} </div>
+            </div>
+        </form>
+   
+    {% endblock body %}
