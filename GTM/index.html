@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        body{
+            background-color: beige;
+        }
+        .con{
+            background-color:burlywood;
+            color: black;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5em;
+            font-size: 1.5em;
+        }
+        .info{
+            margin-bottom: 1.2em;
+        }
+        #sub{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h3>Guess The Number</h3>
+        <div>
+            <label for="num">Enter your guess: </label>
+            <input type="number" name="number" id="number" min="1" max="100" required>
+        </div>
+        <button type="submit" id="sub">Submit</button>
+        <div class="info"></div>
+    </div>
+    <script>
+        const ANSWER = Math.floor(Math.random() * 100) + 1;
+        const INITIAL_SCORE = 10;
+        
+        let score = INITIAL_SCORE;
+
+        function getUserInput() {
+            return parseInt(document.getElementById("number").value);
+        }
+        document.querySelector(".info").textContent = "Score: " + score;
+        document.getElementById("sub").addEventListener('click', function(){
+            let guess = getUserInput();
+
+            if (guess === ANSWER) {
+                document.querySelector(".info").textContent = "Congratulations! You guessed the number correctly. Your final score is: " + score;
+            } else if(guess > ANSWER){
+                score--;
+                if (score <= 0) {
+                    document.querySelector(".info").textContent = "Game Over! You've run out of guesses. The correct number was " + ANSWER + ". Your final score is: 0";
+                }
+                document.querySelector(".info").textContent = "Sorry! Your Guess is High. Score: " + score;
+            }else{
+                score--;
+                if (score <= 0) {
+                    document.querySelector(".info").textContent = "Game Over! You've run out of guesses. The correct number was " + ANSWER + ". Your final score is: 0";
+                }
+                document.querySelector(".info").textContent = "Sorry! Your Guess is Low. Score: " + score;
+            }
+                
+        });
+    </script>
+</body>
+</html>

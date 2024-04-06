@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: "Orbitron", sans-serif;
+            background-color: #ffe2e2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        .con {
+            box-shadow: 2px 2px black;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 280px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: hsl(9, 92%, 75%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 1.2em;
+        }
+        button:hover{
+            background-color: hsl(9, 92%, 65%);
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <button id="go">Generate</button>
+        <div id="pswd"></div>
+    </div>
+    <script>
+        document.getElementById("go").addEventListener('click',function(){
+            // Arrays of lowercase letters, uppercase letters, and special characters
+            const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+            const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const specialChars = '@#$*-_+';
+
+            // Function to get a random element from an array
+            const getRandomElement = (array) => {
+                return array[Math.floor(Math.random() * array.length)];
+            };
+
+            // Generate random password
+            let password = '';
+
+            // Add at least one lowercase, one uppercase, and one special character
+            password += getRandomElement(lowercaseChars);
+            password += getRandomElement(uppercaseChars);
+            password += getRandomElement(specialChars);
+
+            // Fill remaining characters with random characters from all three sets
+            for (let i = 3; i < 8; i++) {
+                const randomSet = getRandomElement([lowercaseChars, uppercaseChars, specialChars]);
+                password += getRandomElement(randomSet);
+            }
+
+            // Shuffle the password characters to make the order random
+            password = password.split('').sort(() => Math.random() - 0.5).join('');
+            console.log(password); // Output: Example: "L9y2i#S4"
+            document.getElementById('pswd').textContent = password;
+
+        });
+    </script>
+</body>
+</html>

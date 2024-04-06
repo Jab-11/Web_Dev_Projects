@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <style>
+        body {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            height: 100vh;
+        }
+        .con {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 280px;
+        }
+        h3{
+            border: 1px dashed #222;
+            padding: 0.5em;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #header th{
+            border-bottom: 1.5px solid black;
+            padding: 8px;
+        }
+        td, th {
+            /*border: 1px solid black;*/
+            padding: 8px;
+            text-align: center;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 1em;
+        }
+        /* Style for the button when hovered */
+        button:hover {
+            background-color: #45a049;
+        }
+        #addTask{
+            margin-top: 2em;
+            background-color: hsl(122, 0%, 55%);
+        }
+        #addTask:hover{
+            background-color: hsl(122, 0%, 30%);
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h3>TODO LIST</h3>
+        
+        <form action="">
+        <label for="task">Task:</label>
+        <input type="text" name="task" id="task">
+        <button type="submit" id="addTask">Add Task</button>
+        </form>
+        <button id="seeTasks">See tasks</button>
+    </div>
+
+    <script>
+        function addTask(task){
+            let myTask = JSON.parse(localStorage.getItem('myTask'));
+            if (!myTask) {
+                myTask = [task];
+            } else {
+                myTask.push(task);
+            }
+            localStorage.setItem('myTask', JSON.stringify(myTask));
+        }
+        
+        document.getElementById("addTask").addEventListener('click', (event) => {
+            event.preventDefault();
+            let taskInput = document.getElementById("task");
+            let task = taskInput.value.trim();
+            if (task !== '') {
+                addTask(task);
+                taskInput.value = ''; 
+            }
+        });
+
+        document.getElementById("seeTasks").addEventListener('click', () => {
+            window.location.href = "task.html";
+        });
+    </script>
+</body>
+</html>

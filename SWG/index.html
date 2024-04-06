@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake, Water & Gun</title>
+    <style>
+        body{
+            background-color:rgb(248, 253, 220);
+        }
+        .con{
+            background-color:rgb(252, 194, 120);
+            color: black;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5em;
+            font-size: 1.5em;
+        }
+        .info{
+            margin-bottom: 1.2em;
+        }
+        #sub{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h1>Snake, Water & Gun</h1>
+        <div>
+            <label for="user">Your choice:</label>
+            <select name="choice" id="choice">
+                <option value="Snake">Snake</option>
+                <option value="Water">Water</option>
+                <option value="Gun">Gun</option>
+            </select>
+            
+        </div>
+        <button type="submit" id="go">GO!</button>
+        <div class="info">
+            
+        </div>
+    </div>
+    <script>
+        let user_points = 0;
+        let comp_points = 0;
+
+        const ch = ['Snake','Water','Gun'];
+
+        function getUserInput(){
+            return document.getElementById("choice").value;
+        }
+        document.querySelector(".info").textContent = "You: " + user_points + " Computer: " + comp_points;
+
+        document.getElementById("go").addEventListener('click',function(){
+            let user = getUserInput();
+            let comp_ind = Math.floor(Math.random() * 3);
+            if(comp_ind==3)
+                comp_ind=0;
+            
+            let comp = ch[comp_ind];
+
+            console.log(user,comp_ind,comp);
+            if(user=='Snake'){
+                if(comp=='Water')
+                    user_points++;
+                else if(comp=='Gun')
+                    comp_points++;
+            }else if(user=='Water'){
+                if(comp=='Gun')
+                    user_points++;
+                else if(comp=='Snake')
+                    comp_points++;
+            }else if(user=='Gun'){
+                if(comp=='Snake')
+                    user_points++;
+                else if(comp=='Water')
+                    comp_points++;
+            }
+
+            document.querySelector(".info").textContent = "You: " + user_points + " Computer: " + comp_points; 
+        });
+    </script>
+    
+</body>
+</html>

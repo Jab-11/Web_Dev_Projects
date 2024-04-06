@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: "Orbitron", sans-serif;
+            background-color: hsl(50, 100%, 94%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .con {
+            box-shadow: 2px 2px black;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+        h1{
+            margin-bottom: 1em;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 10px;
+            width: 42px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Remove up and down arrows for number input */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Optional: Style when the number input is focused */
+        input[type="number"]:focus {
+            outline: none;
+            border-color: hsl(50, 92%, 65%); /* Change border color when focused */
+            box-shadow: 0 0 5px rgba(255, 230, 0, 0.836); /* Add a shadow when focused */
+        }
+        .con2{
+            display: flex;
+            flex-direction: row;
+            justify-content:space-evenly;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h1>Alarm Clock</h1>
+        <div class="con2">
+            <div>
+                <input type="number" name="hr" id="hr" max="23" min="0">:
+                <input type="number" name="min" id="min" max="59" min="0">:
+                <input type="number" name="sec" id="sec" max="59" min="0">
+            </div>
+            <div>
+                <label class="inline-flex items-center me-5 cursor-pointer">
+                    <input type="checkbox" id="toggle" class="sr-only peer" checked>
+                    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400"></div>
+                </label>
+            </div>
+        </div>
+        <p class="wake-up-message" id="wakeUpMessage" style="margin-top: 1em;"></p>
+    </div>
+    <script>
+        let hr = document.getElementById('hr');
+        let min = document.getElementById("min");
+        let sec = document.getElementById('sec');
+        let toggle = document.getElementById('toggle');
+        let wakeUpMessage = document.getElementById('wakeUpMessage');
+
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                alarm();
+            } else {
+                wakeUpMessage.textContent = ''; 
+            }
+        });
+
+        function alarm() {
+            setInterval(function() {
+                let date = new Date();
+                let d_hr = date.getHours();
+                let d_min = date.getMinutes();
+                let d_sec = date.getSeconds();
+
+                if (d_hr == hr.value && d_min == min.value && d_sec == sec.value) {
+                    wakeUpMessage.textContent = "!!WAKE UP!!"; // Display wake-up message
+                    var audio = new Audio('Alarm-Clock.mp3');
+                    audio.play();
+                }
+            }, 1000);
+        }
+
+        function validateInput(input, min, max) {
+            if (input.value < min || input.value > max) {
+                alert(input.name.toUpperCase() + " should be between " + min + " and " + max);
+                input.value = "";
+            }
+        }
+
+        hr.addEventListener('input', function() {
+            validateInput(hr, 0, 23);
+        });
+
+        min.addEventListener('input', function() {
+            validateInput(min, 0, 59);
+        });
+
+        sec.addEventListener('input', function() {
+            validateInput(sec, 0, 59);
+        });
+    </script>
+</body>
+</html>

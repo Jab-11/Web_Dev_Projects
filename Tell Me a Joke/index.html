@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tell me a JOKE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .con {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #go {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #go:hover {
+            background-color: #45a049;
+        }
+
+        .info {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h4>Tell Me A Joke</h4>
+        <button id="go">GO!</button>
+        <div class="info"></div>
+    </div>
+    <script>
+        const jokes = [
+            "Why don't scientists trust atoms? Because they make up everything!",
+            "I'm reading a book on anti-gravity. It's impossible to put down!",
+            "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+            "Why did the scarecrow win an award? Because he was outstanding in his field!",
+            "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+            "What do you call fake spaghetti? An impasta!",
+            "I'm on a whiskey diet. I've lost three days already!",
+            "I'm reading a book about anti-gravity. It's impossible to put down!",
+            "I used to play piano by ear, but now I use my hands.",
+            "I told my wife she should embrace her mistakes. She gave me a hug."
+        ];
+
+        document.getElementById('go').addEventListener('click',function(){
+            let i = Math.floor(Math.random() * 10);
+            document.querySelector(".info").textContent = jokes[i];
+        });
+    </script>
+</body>
+</html>
