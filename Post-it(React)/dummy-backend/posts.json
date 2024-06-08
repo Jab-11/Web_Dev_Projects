@@ -1,0 +1,22 @@
+{
+    "posts": [
+        {
+            "title": "Day 2",
+            "desc": "React Router is awesome, but still complex",
+            "author": "Me",
+            "id": "0.814784989059409"
+        },
+        {
+            "title": "How to use?",
+            "desc": "I dont know",
+            "author": "You",
+            "id": "0.5932082591717465"
+        },
+        {
+            "title": "Welcome",
+            "desc": "Welcome to Post-it",
+            "author": "You",
+            "id": "0.12006348509905274"
+        }
+    ]
+}
